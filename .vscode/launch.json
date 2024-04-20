@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<classplanner.api>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "de.dev101.classplanner.api.Application",
+            "projectName": "classplanner.api",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

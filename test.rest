@@ -1,0 +1,31 @@
+POST http://localhost:5000/v1/students HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "foo",
+    "lastName": "bar",
+    "scores": {
+        "testId": {
+            "pointsScored": 100.0,
+            "isPostscript": false
+        }
+    }
+}
+
+###
+
+POST http://localhost:8080/exams HTTP/1.1
+content-type: application/json
+
+{
+    "name": "testId",
+    "maxPoints": 100.0,
+    "gradingScale": {
+        "A": 90.0,
+        "B": 80.0,
+        "C": 70.0,
+        "D": 60.0,
+        "E": 50.0,
+        "F": 0.0
+    }
+}
