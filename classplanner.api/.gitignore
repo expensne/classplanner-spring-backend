@@ -32,4 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 
-classplanner.api/src/main/resources/application.yml
+src/main/resources/application.yml
