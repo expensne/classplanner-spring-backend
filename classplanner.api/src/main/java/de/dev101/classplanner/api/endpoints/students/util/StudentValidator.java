@@ -1,26 +1,28 @@
-package de.dev101.classplanner.api.endpoints.students;
+package de.dev101.classplanner.api.endpoints.students.util;
 
-import java.util.HashMap;
+import java.util.Map;
 
-import org.springframework.lang.NonNull;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
+import de.dev101.classplanner.api.endpoints.students.model.Score;
+import de.dev101.classplanner.api.endpoints.students.model.Student;
 
 public class StudentValidator implements Validator {
 
     @Override
-    public boolean supports(@NonNull Class<?> clazz) {
+    public boolean supports(Class<?> clazz) {
         return Student.class.equals(clazz);
     }
 
     @Override
-    public void validate(@NonNull Object obj, @NonNull Errors errors) {
+    public void validate(Object obj, Errors errors) {
         Student student = (Student) obj;
 
         var minLen = 2;
         var maxLen = 50;
 
-        var firstName = student.firstName();
+        var firstName = student.getFirstName();
 
         if (firstName == null) {
             errors.rejectValue("firstName", "firstName.null");
@@ -30,7 +32,7 @@ public class StudentValidator implements Validator {
             }
         }
 
-        var lastName = student.lastName();
+        var lastName = student.getLastName();
 
         if (lastName == null) {
             errors.rejectValue("lastName", "lastName.null");
@@ -43,7 +45,7 @@ public class StudentValidator implements Validator {
         var minScore = 0d;
         var maxScore = 1000000d;
 
-        var scores = student.scores();
+        var scores = student.getScores();
 
         if (scores == null) {
             errors.rejectValue("scores", "scores.null");
@@ -62,7 +64,8 @@ public class StudentValidator implements Validator {
         return input.trim().length() < min || input.trim().length() > max;
     }
 
-    private boolean invalidScore(HashMap<String, Score> scores, double min, double max) {
-        return scores.values().stream().anyMatch(score -> score.pointsScored() < min || score.pointsScored() > max);
+    private boolean invalidScore(Map<String, Score> scores, double min, double max) {
+        return scores.values().stream()
+                .anyMatch(score -> score.getPointsScored() < min || score.getPointsScored() > max);
     }
 }

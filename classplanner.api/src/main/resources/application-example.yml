@@ -8,5 +8,6 @@ spring:
         rest:
             base-path: /v1
             default-page-size: 100000
-    hateoas:
-        use-hal-as-default-json-media-type: false
+classplanner:
+    encryption:
+        secret: <YOUR_SECRET_KEY>

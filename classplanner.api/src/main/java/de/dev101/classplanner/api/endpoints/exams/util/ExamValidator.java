@@ -1,24 +1,25 @@
-package de.dev101.classplanner.api.endpoints.exams;
+package de.dev101.classplanner.api.endpoints.exams.util;
 
-import org.springframework.lang.NonNull;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
+import de.dev101.classplanner.api.endpoints.exams.model.Exam;
 
 public class ExamValidator implements Validator {
 
     @Override
-    public boolean supports(@NonNull Class<?> clazz) {
+    public boolean supports(Class<?> clazz) {
         return Exam.class.equals(clazz);
     }
 
     @Override
-    public void validate(@NonNull Object obj, @NonNull Errors errors) {
+    public void validate(Object obj, Errors errors) {
         Exam exam = (Exam) obj;
 
         var minLen = 2;
         var maxLen = 50;
 
-        var name = exam.name();
+        var name = exam.getName();
 
         if (name == null) {
             errors.rejectValue("name", "name.null");
@@ -31,7 +32,7 @@ public class ExamValidator implements Validator {
         var minMaxPoints = 0d;
         var maxMaxPoints = 1000000d;
 
-        var maxPoints = exam.maxPoints();
+        var maxPoints = exam.getMaxPoints();
 
         if (invalidPoints(maxPoints, minMaxPoints, maxMaxPoints)) {
             errors.rejectValue("maxPoints", "maxPoints.invalid");
