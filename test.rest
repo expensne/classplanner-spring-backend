@@ -2,8 +2,8 @@ POST http://localhost:5000/v1/students HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "foo",
-    "lastName": "bar",
+    "firstName": "Foo",
+    "lastName": "Bar",
     "scores": {
         "testId": {
             "pointsScored": 100.0,
@@ -14,12 +14,12 @@ content-type: application/json
 
 ###
 
-POST http://localhost:8080/exams HTTP/1.1
+POST http://localhost:5000/v1/exams HTTP/1.1
 content-type: application/json
 
 {
-    "name": "testId",
-    "maxPoints": 100.0,
+    "name": "Ex4711",
+    "maxPoints": 101.5,
     "gradingScale": {
         "A": 90.0,
         "B": 80.0,
