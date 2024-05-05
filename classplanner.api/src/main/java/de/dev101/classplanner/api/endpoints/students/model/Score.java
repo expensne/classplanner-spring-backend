@@ -9,10 +9,10 @@ import lombok.Data;
 @Data
 public class Score {
 
-    private final double pointsScored;
+    private final Double pointsScored;
     private final boolean isPostscript;
 
-    public Score(double pointsScored, boolean isPostscript) {
+    public Score(Double pointsScored, boolean isPostscript) {
         this.pointsScored = pointsScored;
         this.isPostscript = isPostscript;
     }
